@@ -1,8 +1,7 @@
 @extends('shopify-app::layouts.default')
 
 @section('content')
-    <!-- You are: (shop domain name) -->
-    <p>You are: {{ Auth::user()->name }}</p>
+    @include('partials/navbar')
 @endsection
 
 @section('scripts')
