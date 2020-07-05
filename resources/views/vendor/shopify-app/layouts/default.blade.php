@@ -7,7 +7,7 @@
         <title>{{ config('shopify-app.app_name') }}</title>
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+        <script src="https://unpkg.com/turbolinks"></script>
         @yield('styles')
     </head>
 
@@ -15,6 +15,7 @@
         <div class="app-wrapper">
             <div class="app-content">
                 <main role="main">
+                    @include('partials.navbar')
                     @yield('content')
                 </main>
             </div>

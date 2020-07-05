@@ -1,7 +1,7 @@
 @extends('shopify-app::layouts.default')
 
 @section('content')
-
+    Settings
 @endsection
 
 @section('scripts')
