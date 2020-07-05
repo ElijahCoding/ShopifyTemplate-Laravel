@@ -1,7 +1,7 @@
 @extends('shopify-app::layouts.default')
 
 @section('content')
-
+    Dashboard
 @endsection
 
 @section('scripts')
@@ -14,7 +14,7 @@
         var Button = actions.Button;
         var Redirect = actions.Redirect;
         var titleBarOptions = {
-            title: 'Welcome',
+            title: 'Dashboard',
         };
         var myTitleBar = TitleBar.create(app, titleBarOptions);
     </script>
