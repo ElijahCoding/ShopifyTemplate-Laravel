@@ -34,7 +34,13 @@
         var myTitleBar = TitleBar.create(app, titleBarOptions);
 
         function setTheme() {
-            alert('working')
+            axios.post('configureTheme')
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function(error){
+                    console.log(error);
+                });
         }
     </script>
 @endsection

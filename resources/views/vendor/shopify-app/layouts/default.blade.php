@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>
+        // rename myToken as you like
+        window.myToken =  <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 
     <title>{{ config('shopify-app.app_name') }}</title>
     <script src="https://unpkg.com/turbolinks"></script>
