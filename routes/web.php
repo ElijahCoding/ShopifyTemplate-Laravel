@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth.shopify'], function () {
     Route::get('/', function () {
-        return view('dashboard');
+        $settings = \App\Setting::where('shop_id', \Illuminate\Support\Facades\Auth::user()->name)->first();
+
+        return view('dashboard', compact('settings'));
     })->name('home');
 
     Route::view('/products', 'products');
