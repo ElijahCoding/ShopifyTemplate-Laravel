@@ -10,4 +10,6 @@ Route::group(['middleware' => 'auth.shopify'], function () {
     Route::view('/products', 'products');
     Route::view('/customers', 'customers');
     Route::view('/settings', 'settings');
+
+    Route::post('configureTheme', 'SettingController@configureTheme');
 });

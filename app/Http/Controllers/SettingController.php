@@ -4,9 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SettingController extends Controller
 {
+    public function configureTheme()
+    {
+        $shop = Auth::user();
+
+        $themes = $shop->api()->rest('GET', '/admin/themes.json');
+
+        $activeThemeId = '';
+        foreach ($themes['body']->container['themes'] as $theme) {
+            if ($theme['id'] == 'main') {
+                $activeThemeId = $theme['id'];
+            }
+        }
+
+        $snippet = "Your snippet code updated";
+
+        // Data to pass to our rest api request
+        $array = array('asset' => array('key' => 'snippets/whishlist-example-app.liquid', 'value' => $snippet));
+
+        $shop->api()->rest('PUT', '/admin/themes/'.$activeThemeId.'/assets.json', $array);
+
+        Setting::updateOrCreate(
+            ['shop_id' => $shop->name ],
+            ['activated' => true]
+        );
+
+        return ['message' => 'Theme setup succesfully'];
+    }
+
     /**
      * Display a listing of the resource.
      *
